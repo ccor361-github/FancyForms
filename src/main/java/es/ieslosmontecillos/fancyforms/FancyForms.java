@@ -1,3 +1,5 @@
+package es.ieslosmontecillos.fancyforms;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -5,39 +7,57 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Login extends Application {
+///@author: Corina Cordobez
+
+public class FancyForms extends Application {
+
     @Override
-    public void start(Stage primaryStage) {
-        // Crear etiquetas y campos de texto
-        Label lblUsername = new Label("Username:");
-        TextField txtUsername = new TextField();
+    public void start(Stage escenarioPrincipal) {
+        //Crear etiquetas, campos de texto y botón
+        Label lblTitulo = new Label("Bienvenido");
+        lblTitulo.getStyleClass().add("label-title");
 
-        Label lblPassword = new Label("Password:");
-        PasswordField txtPassword = new PasswordField();
+        Label lblUsuario = new Label("Nombre de usuario:");
+        TextField txtUsuario = new TextField();
 
-        Button btnLogin = new Button("Login");
+        Label lblContrasena = new Label("Contraseña:");
+        PasswordField txtContrasena = new PasswordField();
 
-        // Crear un GridPane para organizar los elementos
+        Button btnIniciarSesion = new Button("Iniciar sesión");
+        Label lblEstado = new Label();
+        lblEstado.getStyleClass().add("label-status");
+
+        //Acción del botón
+        btnIniciarSesion.setOnAction(event -> {
+            lblEstado.setText("Botón de iniciar sesión presionado");
+        });
+
+        //Crear un GridPane para organizar los campos de texto
         GridPane gridPane = new GridPane();
-        gridPane.setHgap(10);  // Espacio horizontal
-        gridPane.setVgap(10);  // Espacio vertical
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
 
-        gridPane.add(lblUsername, 0, 0);
-        gridPane.add(txtUsername, 1, 0);
-        gridPane.add(lblPassword, 0, 1);
-        gridPane.add(txtPassword, 1, 1);
-        gridPane.add(btnLogin, 1, 2);
+        gridPane.add(lblUsuario, 0, 0);
+        gridPane.add(txtUsuario, 1, 0);
+        gridPane.add(lblContrasena, 0, 1);
+        gridPane.add(txtContrasena, 1, 1);
+        gridPane.add(btnIniciarSesion, 1, 2);
 
-        // Crear una escena y cargar el CSS desde la carpeta resources
-        Scene scene = new Scene(gridPane, 300, 200);
-        scene.getStylesheets().add(getClass().getResource("/login.css").toExternalForm());  // ** Cambiar ruta a /login.css
+        //Agrupar los elementos en un VBox (vertical box layout)
+        VBox vbox = new VBox(10);
+        vbox.getChildren().addAll(lblTitulo, gridPane, lblEstado);
 
-        // Configurar el escenario
-        primaryStage.setTitle("Login Form");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        //Crear la escena y cargar la hoja de estilo CSS
+        Scene escena = new Scene(vbox, 400, 300);
+        escena.getStylesheets().add(getClass().getResource("/Style.css").toExternalForm());
+
+        //Configurar el escenario (ventana principal)
+        escenarioPrincipal.setTitle("JavaFX FancyForms");
+        escenarioPrincipal.setScene(escena);
+        escenarioPrincipal.show();
     }
 
     public static void main(String[] args) {
