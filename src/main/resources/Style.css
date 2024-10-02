@@ -1,21 +1,54 @@
-.root{
-   -fx-background-color: gray;
-}
-.label{
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333333;
-    -fx-effect: dropshadow(gaussian, darkgray,0, 0, 0, 1);
-}
-#welcome-text {
-    -fx-font-size: 32px;
-    -fx-font-family: "Arial Black";
-    -fx-fill: #818181;
-    -fx-effect: innershadow( three-pass-box , black  , 6, 0.0 , 0 , 2 );
-}
-#actiontarget {
-    -fx-fill: FIREBRICK;
-    -fx-font-weight: bold;
-    -fx-effect: dropshadow( gaussian , lightblue , 0,0,0,1 );
+/* Estilo para la raíz del diseño */
+.root {
+    -fx-background-color: #6a6969;
+    -fx-padding: 20;
 }
 
+/* Estilo para el título "Bienvenido" */
+.label-title {
+    -fx-font-size: 48px;
+    -fx-font-family: "Arial Black";
+    -fx-fill: #818181;
+    -fx-effect: innershadow( three-pass-box , #000000, 6, 0.0 , 0 , 2 );
+
+}
+
+/* Estilo para las etiquetas de los campos de texto */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+/* Estilo para los campos de texto */
+.text-field, .password-field {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #d3d3d3;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+
+/* Estilo para el botón */
+.button {
+    -fx-background-color: #2c6975;
+    -fx-background-radius: 5;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-padding: 5 10;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+.button:pressed {
+    -fx-background-color: #17455e;
+}
+
+/* Estilo para el texto de estado "Botón de iniciar sesión presionado" */
+.label-status {
+    -fx-text-fill: #aa0000;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
